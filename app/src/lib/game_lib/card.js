@@ -13,23 +13,27 @@ class Card {
     }
 
     getImageSource() {
-        return `/public/images/${this.suit}_${this.rank}.svg`;
+        return `/images/${this.suit}_${this.rank}.svg`;
+    }
+
+    toString() {
+        return `${this.rank}_${this.suit}`;
     }
 }
 
 const SUITS = Object.freeze({
-    HEARTS: 'H',
-    DIAMONDS: 'D',
-    SPADES: 'S',
-    CLUBS: 'C'
+    HEARTS: 'hearts',
+    DIAMONDS: 'diamonds',
+    SPADES: 'spades',
+    CLUBS: 'clubs'
 });
 
 const RANKS = Object.freeze({
-    ACE: 'A',
-    KING: 'K',
-    QUEEN: 'Q',
-    JACK: 'J',
-    TEN: 'T',
+    ACE: 'ace',
+    KING: 'king',
+    QUEEN: 'queen',
+    JACK: 'jack',
+    TEN: '10',
     NINE: '9',
     EIGHT: '8',
     SEVEN: '7',
@@ -40,4 +44,6 @@ const RANKS = Object.freeze({
     TWO: '2' 
 });
 
-export { Card, SUITS, RANKS };
+const DEFAULT_CARD = new Card(0, 0);
+
+export { Card, SUITS, RANKS, DEFAULT_CARD };

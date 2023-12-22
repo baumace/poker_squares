@@ -1,5 +1,5 @@
 <script>
-    import { Card, SUITS, RANKS } from './card.js'
+    import { Card, SUITS, RANKS, DEFAULT_CARD } from './card.js'
     import { activeCard } from './store.js'
 
     // setup
@@ -46,7 +46,7 @@
 
 <div>
     <div>
-        <button class = "card_item" id = "undealt" on:click = { handleDeal } disabled = {$activeCard !== 0 || deck.length === 0} >
+        <button class = "card_item" id = "undealt" on:click = { handleDeal } disabled = {$activeCard !== DEFAULT_CARD || deck.length === 0} >
             {#if deck.length > 0}
                 <img src = "/images/card_placeholder.svg" alt = "card back" />
             {/if}
@@ -54,8 +54,8 @@
     </div>
     <div>
         <button class = "card_item" id= {isClicked ? "selected" : "unselected"} on:click = { handleActiveCardSelection }>
-        {#if $activeCard != 0}
-            <img src = "/images/card_placeholder.svg" alt = "card back" />
+        {#if $activeCard !== DEFAULT_CARD }
+            <img src = "{$activeCard.getImageSource()}" alt = "{$activeCard.toString()}" />
         {/if}
         </button>
     </div>
@@ -74,10 +74,5 @@
     }
     #unselected {
         margin-top: 2rem;
-    }
-    button {
-        margin: 0px;
-        padding: 0px;
-        background: none;
     }
 </style>

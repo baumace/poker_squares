@@ -1,5 +1,6 @@
 import { writable } from "svelte/store";
+import { DEFAULT_CARD } from "./card";
 
-const activeCard = writable(0);
+const activeCard = writable(DEFAULT_CARD);
 
 export { activeCard };
