@@ -30,9 +30,8 @@ body {
 .card_item {
     height: 10rem;
     width: 6.5rem;
-    border: 3px transparent; 
-    outline: 3px solid purple;
-    margin: .5rem;
+    outline: 5px solid white;
+    margin: .75rem;
 }
 
 @media (prefers-color-scheme: light) {

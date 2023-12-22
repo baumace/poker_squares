@@ -1,5 +1,5 @@
 <script>
-    import { GridItem } from './Grid.js'
+    import { GridItem } from './grid.js';
 
     let grid = [
         [],
@@ -19,7 +19,6 @@
         }
         row++;
     }
-    console.log(grid);
 </script>
 
 <div class = "grid_container">
@@ -37,7 +36,6 @@
 <style>
     .grid_container {
         margin-left: 5%;
-        background: blue;
     }
 
     .card_row {

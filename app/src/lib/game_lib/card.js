@@ -5,12 +5,15 @@ class Card {
     }
 
     getSuit() {
+        return this.suit;
     }
 
     getRank() {
+        return this.rank;
     }
 
     getImageSource() {
+        return `/public/images/${this.suit}_${this.rank}.svg`;
     }
 }
 
