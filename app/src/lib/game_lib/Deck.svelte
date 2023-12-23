@@ -33,7 +33,8 @@
     prepareDeck();
 
     // game management
-    $: isClicked = false;
+    let isClicked = false;
+    $: disableDeal = $activeCard !== DEFAULT_CARD || deck.length === 0;
 
     function handleDeal() {
         activeCard.set(deck.pop());
@@ -46,7 +47,7 @@
 
 <div>
     <div>
-        <button class = "card_item" id = "undealt" on:click = { handleDeal } disabled = {$activeCard !== DEFAULT_CARD || deck.length === 0} >
+        <button class = "card_item" id = "undealt" on:click = { handleDeal } disabled = {disableDeal} >
             {#if deck.length > 0}
                 <img src = "/images/card_placeholder.svg" alt = "card back" />
             {/if}
