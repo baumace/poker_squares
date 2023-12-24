@@ -11,7 +11,6 @@
 <style>
     span {
         display: flex;
-        background: red;
         padding: 2em;
         width: 75%;
         margin: auto;

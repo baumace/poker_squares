@@ -8,7 +8,6 @@
 
 <style>
     div {
-        background: orange;
         height: 100%;
     }
 </style>
