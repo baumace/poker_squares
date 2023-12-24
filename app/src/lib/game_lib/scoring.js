@@ -98,4 +98,4 @@ function scoreHand(hand) {
     return 0;
 }
 
-export { scoreHand };
+export { scoreHand, sameSuits, byRank, straight, countOccurrences, countKind, countPairs };
