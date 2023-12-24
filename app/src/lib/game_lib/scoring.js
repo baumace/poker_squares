@@ -2,13 +2,15 @@ import { RANKS, HANDS } from "./card";
 
 function sameSuits(cards) {
     let previousSuit = null;
-    return cards.reduce((result = true, card) => {
-        if (result) {
+    return cards.reduce((result, card) => {
+        if (result && previousSuit !== null) {
             result = card.suit === previousSuit; 
+            previousSuit = card.suit;
+        } else if (previousSuit === null) {
             previousSuit = card.suit;
         }
         return result;
-    });
+    }, true);
 }
 
 function byRank(cardA, cardB) {
@@ -17,25 +19,36 @@ function byRank(cardA, cardB) {
 }
 
 function straight(cards) {
-    const leadingAce = cards[0] === RANKS.ACE;
+    if (cards.length === 0) return false;
+
+    const leadingAce = cards.length > 0 && cards[0].rank === RANKS.ACE
     if (leadingAce) {
         const ace = cards.shift();
-        const remainderIsStraight = straight(cards);
+        const restOfHandStraight = straight(cards);
         cards.unshift(ace);
+        if (restOfHandStraight) {
+            const highAceStraight = cards[cards.length - 1].rank === RANKS.TEN;
+            if (highAceStraight) return true;
+
+            const lowAceStraight = cards[cards.length - 1].rank === RANKS.TWO;
+            if (lowAceStraight) return true;
+        }
         return false;
     } else {
         let previousRank = null;
-        return cards.reduce((result = true, card) => {
-            if (result) {
+        return cards.reduce((result, card) => {
+            if (result && previousRank !== null) {
                 result = card.rank - previousRank === -1; 
-                previousRank = card.suit;
+                previousRank = card.rank;
+            } else if (previousRank === null) {
+                previousRank = card.rank;
             }
             return result;
-        });
+        }, true);
     }
 }
 
-function countOccurrences(cards) {
+function countRankOccurrences(cards) {
     let occurrences = {};
     cards.forEach((card) => {
         occurrences[card.rank] = occurrences[card.rank] ? occurrences[card.rank] + 1 : 1;
@@ -54,7 +67,7 @@ function countKind(occurrences) {
 function countPairs(occurrences) {
     let numPairs = 0;
     Object.values(occurrences).forEach((count) => {
-        if (count > 2) numPairs++;
+        if (count >= 2) numPairs++;
     });
     return numPairs;
 }
@@ -64,11 +77,11 @@ function scoreHand(hand) {
     const fullHand = hand.length === 5;
     const sameSuit = sameSuits(hand);
     const straightHand = straight(hand);
-    const occurrences = countOccurrences(hand);
+    const occurrences = countRankOccurrences(hand);
     const numKind = countKind(occurrences);
     const numPairs = countPairs(occurrences);
 
-    const royalFlush = fullHand && sameSuit && hand[4] === RANKS.TEN;
+    const royalFlush = fullHand && sameSuit && hand[4].rank === RANKS.TEN;
     if (royalFlush) return HANDS.ROYAL_FLUSH;
 
     const straightFlush = fullHand && sameSuit && straightHand;
@@ -78,8 +91,9 @@ function scoreHand(hand) {
     if (fourOfAKind) return HANDS.FOUR_KIND;
 
     const threeOfAKind = numKind === 3;
-    const onePair = numPairs === 1;
-    const fullHouse = threeOfAKind && onePair;
+    // two pairs, one extra pair besides three of a kind
+    const twoPairs = numPairs === 2;
+    const fullHouse = threeOfAKind && twoPairs;
     if (fullHouse) return HANDS.FULL_HOUSE;
 
     const flush = fullHand && sameSuit;
@@ -90,12 +104,12 @@ function scoreHand(hand) {
 
     if (threeOfAKind) return HANDS.THREE_KIND;
 
-    const twoPairs = numPairs === 2;
     if (twoPairs) return HANDS.TWO_PAIRS;
     
+    const onePair = numPairs === 1;
     if (onePair) return HANDS.PAIR;
 
     return 0;
 }
 
-export { scoreHand, sameSuits, byRank, straight, countOccurrences, countKind, countPairs };
+export { scoreHand, sameSuits, byRank, straight, countRankOccurrences, countKind, countPairs };

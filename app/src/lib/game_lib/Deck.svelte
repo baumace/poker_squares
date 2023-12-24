@@ -1,4 +1,5 @@
 <script>
+    import { onMount } from 'svelte';
     import { Card, SUITS, RANKS, DEFAULT_CARD } from './card.js'
     import { activeCard } from './store.js'
 
@@ -30,7 +31,7 @@
         deck = deck.slice(0, numberOfCards);
     }
 
-    prepareDeck();
+    onMount(prepareDeck);
 
     // game management
     let isClicked = false;
