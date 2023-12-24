@@ -1,5 +1,5 @@
-import { scoreHand, sameSuits, byRank, straight, countRankOccurrences, countKind, countPairs } from './scoring.js';
-import { Card, SUITS, RANKS, HANDS } from "./card";
+import { scoreHand, sameSuits, byRank, straight, countRankOccurrences, countKind, countPairs } from '/src/lib/game_lib/scoring.js';
+import { Card, SUITS, RANKS, HANDS } from "/src/lib/game_lib/card.js";
 import { describe, expect, test } from 'vitest';
 
 const aceHearts = new Card(SUITS.HEARTS, RANKS.ACE);
