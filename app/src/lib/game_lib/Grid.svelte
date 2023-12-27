@@ -1,9 +1,8 @@
 <script>
-    import { initializeGrid } from './grid.js';
-    import { scoreHand } from './scoring.js';
-    import { activeCard } from './store.js';
-    import { DEFAULT_CARD } from './card.js';
-
+    import { initializeGrid } from "./grid.js";
+    import { scoreHand } from "./scoring.js";
+    import { activeCard } from "./store.js";
+    import { DEFAULT_CARD } from "./card.js";
 
     let grid = initializeGrid();
 
@@ -11,13 +10,15 @@
     let columnScores = [0, 0, 0, 0, 0];
 
     function scoreRow(row) {
-        const hand = grid[row].filter((item) => item.occupied).map((item) => item.card);
+        const hand = grid[row]
+            .filter((item) => item.occupied)
+            .map((item) => item.card);
         rowScores[row] = scoreHand(hand);
     }
 
     function scoreColumn(column) {
         let hand = [];
-        grid.forEach(row => {
+        grid.forEach((row) => {
             if (row[column].occupied) {
                 hand.push(row[column].card);
             }
@@ -36,29 +37,38 @@
     }
 </script>
 
-<div class = "grid_container">
+<div class="grid_container">
     {#each grid as row, r}
-        <span class = "card_row">
+        <span class="card_row">
             {#each row as gridItem, c}
-                <button class = "card_item" disabled = { gridItem.occupied } on:click = { () => handleClick(gridItem, r, c) }>
-                    {#if gridItem.occupied }
-                        <img src = "{gridItem.card.getImageSource()}" alt = "{gridItem.card.toString()}"/>
+                <button
+                    class="card_item"
+                    disabled={gridItem.occupied}
+                    on:click={() => handleClick(gridItem, r, c)}
+                >
+                    {#if gridItem.occupied}
+                        <img
+                            src={gridItem.card.getImageSource()}
+                            alt={gridItem.card.toString()}
+                        />
                     {/if}
                 </button>
             {/each}
-            <div class = "card_item">
-                { rowScores[r] }
+            <div class="card_item">
+                {rowScores[r]}
             </div>
         </span>
     {/each}
     <span>
         {#each columnScores as score}
-            <div class = "card_item">
-                { score }
+            <div class="card_item">
+                {score}
             </div>
         {/each}
-        <div class = "card_item">
-            { rowScores.concat(columnScores).reduce((sum, score) => sum + score, 0) }
+        <div class="card_item">
+            {rowScores
+                .concat(columnScores)
+                .reduce((sum, score) => sum + score, 0)}
         </div>
     </span>
 </div>

@@ -1,3 +1,6 @@
+/**
+ * Card.
+ */
 class Card {
     constructor(suit, rank) {
         this.suit = suit;
@@ -13,11 +16,15 @@ class Card {
     }
 
     getImageSource() {
-        return `/images/${convertSuitToString(this.suit)}_${convertRankToString(this.rank)}.svg`;
+        return `/images/${convertSuitToString(this.suit)}_${convertRankToString(
+            this.rank,
+        )}.svg`;
     }
 
     toString() {
-        return `${convertRankToString(this.rank)}_${convertSuitToString(this.suit)}`;
+        return `${convertRankToString(this.rank)}_${convertSuitToString(
+            this.suit,
+        )}`;
     }
 }
 
@@ -25,7 +32,7 @@ const SUITS = Object.freeze({
     HEARTS: 0,
     DIAMONDS: 1,
     SPADES: 2,
-    CLUBS: 3 
+    CLUBS: 3,
 });
 
 const RANKS = Object.freeze({
@@ -41,50 +48,50 @@ const RANKS = Object.freeze({
     FIVE: 3,
     FOUR: 2,
     THREE: 1,
-    TWO: 0 
+    TWO: 0,
 });
 
 function convertSuitToString(suit) {
     switch (suit) {
         case SUITS.HEARTS:
-            return "hearts";
+            return 'hearts';
         case SUITS.DIAMONDS:
-            return "diamonds";
+            return 'diamonds';
         case SUITS.SPADES:
-            return "spades";
+            return 'spades';
         case SUITS.CLUBS:
-            return "clubs";
+            return 'clubs';
     }
 }
 
 function convertRankToString(rank) {
     switch (rank) {
         case RANKS.ACE:
-            return "ace";
+            return 'ace';
         case RANKS.KING:
-            return "king";
+            return 'king';
         case RANKS.QUEEN:
-            return "queen";
+            return 'queen';
         case RANKS.JACK:
-            return "jack";
+            return 'jack';
         case RANKS.TEN:
-            return "ten";
+            return 'ten';
         case RANKS.NINE:
-            return "nine";
+            return 'nine';
         case RANKS.EIGHT:
-            return "eight";
+            return 'eight';
         case RANKS.SEVEN:
-            return "seven";
+            return 'seven';
         case RANKS.SIX:
-            return "six";
+            return 'six';
         case RANKS.FIVE:
-            return "five";
+            return 'five';
         case RANKS.FOUR:
-            return "four";
+            return 'four';
         case RANKS.THREE:
-            return "three";
+            return 'three';
         case RANKS.TWO:
-            return "two";
+            return 'two';
     }
 }
 
@@ -99,7 +106,7 @@ const HANDS = Object.freeze({
     STRAIGHT: 15,
     THREE_KIND: 10,
     TWO_PAIRS: 5,
-    PAIR: 2
+    PAIR: 2,
 });
 
 export { Card, SUITS, RANKS, DEFAULT_CARD, HANDS };

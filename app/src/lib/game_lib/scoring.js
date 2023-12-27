@@ -1,10 +1,10 @@
-import { RANKS, HANDS } from "./card";
+import { RANKS, HANDS } from './card';
 
 function sameSuits(cards) {
     let previousSuit = null;
     return cards.reduce((result, card) => {
         if (result && previousSuit !== null) {
-            result = card.suit === previousSuit; 
+            result = card.suit === previousSuit;
             previousSuit = card.suit;
         } else if (previousSuit === null) {
             previousSuit = card.suit;
@@ -21,7 +21,7 @@ function byRank(cardA, cardB) {
 function straight(cards) {
     if (cards.length === 0) return false;
 
-    const leadingAce = cards.length > 0 && cards[0].rank === RANKS.ACE
+    const leadingAce = cards.length > 0 && cards[0].rank === RANKS.ACE;
     if (leadingAce) {
         const ace = cards.shift();
         const restOfHandStraight = straight(cards);
@@ -38,7 +38,7 @@ function straight(cards) {
         let previousRank = null;
         return cards.reduce((result, card) => {
             if (result && previousRank !== null) {
-                result = card.rank - previousRank === -1; 
+                result = card.rank - previousRank === -1;
                 previousRank = card.rank;
             } else if (previousRank === null) {
                 previousRank = card.rank;
@@ -51,7 +51,9 @@ function straight(cards) {
 function countRankOccurrences(cards) {
     let occurrences = {};
     cards.forEach((card) => {
-        occurrences[card.rank] = occurrences[card.rank] ? occurrences[card.rank] + 1 : 1;
+        occurrences[card.rank] = occurrences[card.rank]
+            ? occurrences[card.rank] + 1
+            : 1;
     });
     return occurrences;
 }
@@ -105,11 +107,19 @@ function scoreHand(hand) {
     if (threeOfAKind) return HANDS.THREE_KIND;
 
     if (twoPairs) return HANDS.TWO_PAIRS;
-    
+
     const onePair = numPairs === 1;
     if (onePair) return HANDS.PAIR;
 
     return 0;
 }
 
-export { scoreHand, sameSuits, byRank, straight, countRankOccurrences, countKind, countPairs };
+export {
+    scoreHand,
+    sameSuits,
+    byRank,
+    straight,
+    countRankOccurrences,
+    countKind,
+    countPairs,
+};

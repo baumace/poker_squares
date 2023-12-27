@@ -1,4 +1,4 @@
-import { DEFAULT_CARD } from "./card";
+import { DEFAULT_CARD } from './card';
 
 class GridItem {
     constructor() {
@@ -12,18 +12,12 @@ class GridItem {
             this.occupied = true;
         }
     }
-};
+}
 
 function initializeGrid() {
-    let grid = [
-        [],
-        [],
-        [],
-        [],
-        []
-    ];
+    let grid = [[], [], [], [], []];
 
-    const numRowsColumns = 5; 
+    const numRowsColumns = 5;
     let row = 0;
     while (row < numRowsColumns) {
         let column = 0;
