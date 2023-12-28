@@ -4,8 +4,8 @@
 </script>
 
 <span>
-    <Deck/>
-    <Grid/>
+    <Deck />
+    <Grid />
 </span>
 
 <style>
