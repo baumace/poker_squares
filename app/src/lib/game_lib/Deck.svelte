@@ -3,7 +3,6 @@
     import { Card, SUITS, RANKS, DEFAULT_CARD } from "./card.js";
     import { activeCard } from "./store.js";
 
-    // setup
     let deck = [];
 
     function generateDeck() {
@@ -24,6 +23,9 @@
         }
     }
 
+    /**
+     * Prepares deck for poker squares by selecting the 25 front cards.
+     */
     function prepareDeck() {
         const numberOfCards = 25;
         generateDeck();
@@ -33,8 +35,12 @@
 
     onMount(prepareDeck);
 
-    // game management
     let isClicked = false;
+    /**
+     * Deal is only possible when active card is empty and there are cards in
+     * the deck.
+     * @type {boolean}
+     */
     $: disableDeal = $activeCard !== DEFAULT_CARD || deck.length === 0;
 
     function handleDeal() {

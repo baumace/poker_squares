@@ -1,7 +1,14 @@
 /**
- * Card.
+ * Card representation with suit and rank.
+ * @class
+ * @constructor
+ * @public
  */
 class Card {
+    /**
+     * @param {Suit} suit
+     * @param {Rank} rank
+     */
     constructor(suit, rank) {
         this.suit = suit;
         this.rank = rank;
@@ -28,13 +35,22 @@ class Card {
     }
 }
 
+/**
+ * @typedef {number} Suit
+ * @enum {Suit}
+ */
 const SUITS = Object.freeze({
     HEARTS: 0,
     DIAMONDS: 1,
     SPADES: 2,
     CLUBS: 3,
+    DEFAULT: -1,
 });
 
+/**
+ * @typedef {number} Rank
+ * @enum {Rank}
+ */
 const RANKS = Object.freeze({
     ACE: 12,
     KING: 11,
@@ -49,8 +65,12 @@ const RANKS = Object.freeze({
     FOUR: 2,
     THREE: 1,
     TWO: 0,
+    DEFAULT: -1,
 });
 
+/**
+ * @param {Suit} suit
+ */
 function convertSuitToString(suit) {
     switch (suit) {
         case SUITS.HEARTS:
@@ -64,6 +84,9 @@ function convertSuitToString(suit) {
     }
 }
 
+/**
+ * @param {Rank} rank
+ */
 function convertRankToString(rank) {
     switch (rank) {
         case RANKS.ACE:
@@ -95,8 +118,12 @@ function convertRankToString(rank) {
     }
 }
 
-const DEFAULT_CARD = new Card(0, 0);
+const DEFAULT_CARD = new Card(SUITS.DEFAULT, RANKS.DEFAULT);
 
+/**
+ * @typedef {number} Hand
+ * @enum {Hand}
+ */
 const HANDS = Object.freeze({
     ROYAL_FLUSH: 100,
     STRAIGHT_FLUSH: 75,
@@ -107,6 +134,7 @@ const HANDS = Object.freeze({
     THREE_KIND: 10,
     TWO_PAIRS: 5,
     PAIR: 2,
+    NONE: 0,
 });
 
 export { Card, SUITS, RANKS, DEFAULT_CARD, HANDS };

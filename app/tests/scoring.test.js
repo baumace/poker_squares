@@ -1,5 +1,13 @@
-import { scoreHand, sameSuits, byRank, straight, countRankOccurrences, countKind, countPairs } from '/src/lib/game_lib/scoring.js';
-import { Card, SUITS, RANKS, HANDS } from "/src/lib/game_lib/card.js";
+import {
+    scoreHand,
+    sameSuits,
+    byRank,
+    straight,
+    countRankOccurrences,
+    countKind,
+    countPairs,
+} from '/src/lib/game_lib/scoring.js';
+import { Card, SUITS, RANKS, HANDS } from '/src/lib/game_lib/card.js';
 import { describe, expect, test } from 'vitest';
 
 const aceHearts = new Card(SUITS.HEARTS, RANKS.ACE);
@@ -19,12 +27,18 @@ const twoSpades = new Card(SUITS.SPADES, RANKS.TWO);
 
 const twoDiamonds = new Card(SUITS.DIAMONDS, RANKS.TWO);
 
-const twoClubs= new Card(SUITS.CLUBS, RANKS.TWO);
+const twoClubs = new Card(SUITS.CLUBS, RANKS.TWO);
 
 describe('sameSuits', () => {
     test('identifies full hand of same suits', () => {
         // Arrange
-        const hand = [aceHearts, threeHearts, queenHearts, tenHearts, sixHearts];
+        const hand = [
+            aceHearts,
+            threeHearts,
+            queenHearts,
+            tenHearts,
+            sixHearts,
+        ];
         const expected = true;
 
         // Act
@@ -77,7 +91,7 @@ describe('sameSuits', () => {
 
         // Act
         const actual = sameSuits(hand);
-        
+
         // Assert
         expect(actual).toEqual(expected);
     });
@@ -89,7 +103,7 @@ describe('sameSuits', () => {
 
         // Act
         const actual = sameSuits(hand);
-        
+
         // Assert
         expect(actual).toEqual(expected);
     });
@@ -99,7 +113,13 @@ describe('byRank', () => {
     test('sorts in descending order', () => {
         // Arrange
         let hand = [aceHearts, threeHearts, queenHearts, tenHearts, sixHearts];
-        const expectedHand = [aceHearts, queenHearts, tenHearts, sixHearts, threeHearts];
+        const expectedHand = [
+            aceHearts,
+            queenHearts,
+            tenHearts,
+            sixHearts,
+            threeHearts,
+        ];
 
         // Act
         hand = hand.sort(byRank);
@@ -136,7 +156,13 @@ describe('byRank', () => {
 describe('straight', () => {
     test('identify a same suit straight', () => {
         // Arrange
-        const hand = [sixHearts, fiveHearts, fourHearts, threeHearts, twoHearts].sort(byRank);
+        const hand = [
+            sixHearts,
+            fiveHearts,
+            fourHearts,
+            threeHearts,
+            twoHearts,
+        ].sort(byRank);
         const expected = true;
 
         // Act
@@ -148,7 +174,13 @@ describe('straight', () => {
 
     test('identify a different suit straight', () => {
         // Arrange
-        const hand = [sixHearts, fiveHearts, fourSpades, threeHearts, twoSpades].sort(byRank);
+        const hand = [
+            sixHearts,
+            fiveHearts,
+            fourSpades,
+            threeHearts,
+            twoSpades,
+        ].sort(byRank);
         const expected = true;
 
         // Act
@@ -160,7 +192,13 @@ describe('straight', () => {
 
     test('identify a non-straight', () => {
         // Arrange
-        const hand = [sixHearts, queenHearts, fourSpades, threeHearts, twoSpades].sort(byRank);
+        const hand = [
+            sixHearts,
+            queenHearts,
+            fourSpades,
+            threeHearts,
+            twoSpades,
+        ].sort(byRank);
         const expected = false;
 
         // Act
@@ -172,7 +210,13 @@ describe('straight', () => {
 
     test('identify a same suit low ace straight', () => {
         // Arrange
-        const hand = [aceHearts, fiveHearts, fourHearts, threeHearts, twoHearts].sort(byRank);
+        const hand = [
+            aceHearts,
+            fiveHearts,
+            fourHearts,
+            threeHearts,
+            twoHearts,
+        ].sort(byRank);
         const expected = true;
 
         // Act
@@ -184,7 +228,13 @@ describe('straight', () => {
 
     test('identify a same suit high ace straight', () => {
         // Arrange
-        const hand = [aceHearts, kingHearts, queenHearts, jackHearts, tenHearts].sort(byRank);
+        const hand = [
+            aceHearts,
+            kingHearts,
+            queenHearts,
+            jackHearts,
+            tenHearts,
+        ].sort(byRank);
         const expected = true;
 
         // Act
@@ -196,7 +246,13 @@ describe('straight', () => {
 
     test('identify a different suit low ace straight', () => {
         // Arrange
-        const hand = [aceHearts, fiveHearts, fourSpades, threeHearts, twoSpades].sort(byRank);
+        const hand = [
+            aceHearts,
+            fiveHearts,
+            fourSpades,
+            threeHearts,
+            twoSpades,
+        ].sort(byRank);
         const expected = true;
 
         // Act
@@ -208,7 +264,13 @@ describe('straight', () => {
 
     test('identify a different suit high ace straight', () => {
         // Arrange
-        const hand = [aceSpades, kingHearts, queenHearts, jackHearts, tenHearts].sort(byRank);
+        const hand = [
+            aceSpades,
+            kingHearts,
+            queenHearts,
+            jackHearts,
+            tenHearts,
+        ].sort(byRank);
         const expected = true;
 
         // Act
@@ -220,7 +282,13 @@ describe('straight', () => {
 
     test('identify an ace non-straight', () => {
         // Arrange
-        const hand = [aceSpades, fiveHearts, twoHearts, fourSpades, kingHearts].sort(byRank);
+        const hand = [
+            aceSpades,
+            fiveHearts,
+            twoHearts,
+            fourSpades,
+            kingHearts,
+        ].sort(byRank);
         const expected = false;
 
         // Act
@@ -246,7 +314,13 @@ describe('straight', () => {
 describe('countRankOccurrences', () => {
     test('counts multiple occurrences', () => {
         // Arrange
-        const hand = [aceSpades, fourSpades, fourHearts, twoSpades, twoHearts].sort(byRank);
+        const hand = [
+            aceSpades,
+            fourSpades,
+            fourHearts,
+            twoSpades,
+            twoHearts,
+        ].sort(byRank);
         let expected = {};
         expected[RANKS.ACE] = 1;
         expected[RANKS.FOUR] = 2;
@@ -373,7 +447,13 @@ describe('countPairs', () => {
 describe('scoreHand', () => {
     test('royal flush', () => {
         // Arrange
-        const hand = [aceHearts, kingHearts, queenHearts, jackHearts, tenHearts].sort(byRank);;
+        const hand = [
+            aceHearts,
+            kingHearts,
+            queenHearts,
+            jackHearts,
+            tenHearts,
+        ].sort(byRank);
         const expected = HANDS.ROYAL_FLUSH;
 
         // Act
@@ -385,7 +465,13 @@ describe('scoreHand', () => {
 
     test('straight flush', () => {
         // Arrange
-        const hand = [sixHearts, fiveHearts, fourHearts, threeHearts, twoHearts].sort(byRank);;
+        const hand = [
+            sixHearts,
+            fiveHearts,
+            fourHearts,
+            threeHearts,
+            twoHearts,
+        ].sort(byRank);
         const expected = HANDS.STRAIGHT_FLUSH;
 
         // Act
@@ -397,7 +483,13 @@ describe('scoreHand', () => {
 
     test('four of a kind', () => {
         // Arrange
-        const hand = [twoClubs, twoDiamonds, fourHearts, twoSpades, twoHearts].sort(byRank);;
+        const hand = [
+            twoClubs,
+            twoDiamonds,
+            fourHearts,
+            twoSpades,
+            twoHearts,
+        ].sort(byRank);
         const expected = HANDS.FOUR_KIND;
 
         // Act
@@ -409,7 +501,13 @@ describe('scoreHand', () => {
 
     test('full house', () => {
         // Arrange
-        const hand = [aceHearts, twoDiamonds, aceSpades, twoSpades, twoHearts].sort(byRank);;
+        const hand = [
+            aceHearts,
+            twoDiamonds,
+            aceSpades,
+            twoSpades,
+            twoHearts,
+        ].sort(byRank);
         const expected = HANDS.FULL_HOUSE;
 
         // Act
@@ -421,7 +519,13 @@ describe('scoreHand', () => {
 
     test('flush', () => {
         // Arrange
-        const hand = [aceHearts, sixHearts, jackHearts, threeHearts, twoHearts].sort(byRank);;
+        const hand = [
+            aceHearts,
+            sixHearts,
+            jackHearts,
+            threeHearts,
+            twoHearts,
+        ].sort(byRank);
         const expected = HANDS.FLUSH;
 
         // Act
@@ -433,7 +537,13 @@ describe('scoreHand', () => {
 
     test('straight', () => {
         // Arrange
-        const hand = [aceHearts, fiveHearts, fourSpades, threeHearts, twoSpades].sort(byRank);
+        const hand = [
+            aceHearts,
+            fiveHearts,
+            fourSpades,
+            threeHearts,
+            twoSpades,
+        ].sort(byRank);
         const expected = HANDS.STRAIGHT;
 
         // Act
@@ -445,7 +555,13 @@ describe('scoreHand', () => {
 
     test('three of a kind', () => {
         // Arrange
-        const hand = [twoClubs, tenHearts, fourHearts, twoSpades, twoHearts].sort(byRank);;
+        const hand = [
+            twoClubs,
+            tenHearts,
+            fourHearts,
+            twoSpades,
+            twoHearts,
+        ].sort(byRank);
         const expected = HANDS.THREE_KIND;
 
         // Act
@@ -457,7 +573,13 @@ describe('scoreHand', () => {
 
     test('two pairs', () => {
         // Arrange
-        const hand = [twoClubs, twoHearts, aceSpades, aceHearts, tenHearts].sort(byRank);
+        const hand = [
+            twoClubs,
+            twoHearts,
+            aceSpades,
+            aceHearts,
+            tenHearts,
+        ].sort(byRank);
         const expected = HANDS.TWO_PAIRS;
 
         // Act
@@ -469,7 +591,13 @@ describe('scoreHand', () => {
 
     test('one pairs', () => {
         // Arrange
-        const hand = [twoClubs, twoHearts, aceSpades, fourHearts, tenHearts].sort(byRank);
+        const hand = [
+            twoClubs,
+            twoHearts,
+            aceSpades,
+            fourHearts,
+            tenHearts,
+        ].sort(byRank);
         const expected = HANDS.PAIR;
 
         // Act

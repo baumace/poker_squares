@@ -1,5 +1,5 @@
 <script>
-    import { initializeGrid } from "./grid.js";
+    import { initializeGrid, GridItem } from "./grid.js";
     import { scoreHand } from "./scoring.js";
     import { activeCard } from "./store.js";
     import { DEFAULT_CARD } from "./card.js";
@@ -9,6 +9,10 @@
     let rowScores = [0, 0, 0, 0, 0];
     let columnScores = [0, 0, 0, 0, 0];
 
+    /**
+     * Calculates and stores the score of a row.
+     * @param {number} row - the row being scored
+     */
     function scoreRow(row) {
         const hand = grid[row]
             .filter((item) => item.occupied)
@@ -16,6 +20,10 @@
         rowScores[row] = scoreHand(hand);
     }
 
+    /**
+     * Calculates and store the score of a column.
+     * @param {number} column - the column being scored
+     */
     function scoreColumn(column) {
         let hand = [];
         grid.forEach((row) => {
@@ -26,6 +34,12 @@
         columnScores[column] = scoreHand(hand);
     }
 
+    /**
+     * Handles scoring and store updates resulting from a click.
+     * @param {GridItem} item - item clicked
+     * @param {number} row - row containing the item
+     * @param {number} column - column containing the item
+     */
     function handleClick(item, row, column) {
         if ($activeCard !== DEFAULT_CARD) {
             item.setItem($activeCard);
