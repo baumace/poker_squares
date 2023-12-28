@@ -36,7 +36,6 @@
 
     onMount(prepareDeck);
 
-    let isClicked = false;
     /**
      * Deal is only possible when active card is empty and there are cards in
      * the deck.
@@ -47,13 +46,9 @@
     function handleDeal() {
         activeCard.set(deck.pop());
     }
-
-    function handleActiveCardSelection() {
-        isClicked = !isClicked;
-    }
 </script>
 
-<div>
+<div class="deck_container">
     <div>
         <button
             class="card_item"
@@ -67,11 +62,7 @@
         </button>
     </div>
     <div>
-        <button
-            class="card_item"
-            id={isClicked ? "selected" : "unselected"}
-            on:click={handleActiveCardSelection}
-        >
+        <button class="card_item" id="dealt">
             {#if $activeCard !== DEFAULT_CARD}
                 <img
                     src={$activeCard.getImageSource()}
@@ -83,14 +74,14 @@
 </div>
 
 <style>
+    .deck_container {
+        height: 100%;
+        margin-top: -7.5rem;
+    }
     #undealt {
         margin-bottom: 2rem;
     }
-    #selected {
-        margin-top: 2rem;
-        outline: 5px solid yellow;
-    }
-    #unselected {
+    #dealt {
         margin-top: 2rem;
     }
 </style>

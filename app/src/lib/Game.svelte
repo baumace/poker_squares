@@ -12,9 +12,9 @@
     span {
         display: flex;
         padding: 2em;
-        width: 75%;
         margin: auto;
         justify-content: center;
         align-items: center;
+        position: relative;
     }
 </style>
