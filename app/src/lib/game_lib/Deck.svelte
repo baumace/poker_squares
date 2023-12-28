@@ -9,6 +9,7 @@
         deck = [];
         Object.values(SUITS).forEach((suit) => {
             Object.values(RANKS).forEach((rank) => {
+                console.log(`${suit} ${rank}`);
                 deck.push(new Card(suit, rank));
             });
         });
@@ -82,9 +83,6 @@
 </div>
 
 <style>
-    img {
-        outline: none;
-    }
     #undealt {
         margin-bottom: 2rem;
     }
