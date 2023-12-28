@@ -23,6 +23,7 @@ class Card {
     }
 
     getImageSource() {
+        return `/images/card_placeholder.svg`;
         return `/images/${convertSuitToString(this.suit)}_${convertRankToString(
             this.rank,
         )}.svg`;
@@ -44,7 +45,6 @@ const SUITS = Object.freeze({
     DIAMONDS: 1,
     SPADES: 2,
     CLUBS: 3,
-    DEFAULT: -1,
 });
 
 /**
@@ -65,7 +65,6 @@ const RANKS = Object.freeze({
     FOUR: 2,
     THREE: 1,
     TWO: 0,
-    DEFAULT: -1,
 });
 
 /**
@@ -118,7 +117,7 @@ function convertRankToString(rank) {
     }
 }
 
-const DEFAULT_CARD = new Card(SUITS.DEFAULT, RANKS.DEFAULT);
+const DEFAULT_CARD = new Card(-1, -1);
 
 /**
  * @typedef {number} Hand
