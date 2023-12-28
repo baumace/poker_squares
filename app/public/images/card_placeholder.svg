@@ -1,11 +1,41 @@
-<svg xml:space="preserve" viewBox="209.17541229385307 60.480000000000004 101.70914542728636 150.72" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="max-height: 500px" width="101.70914542728636" height="150.72">
-<desc>Created with Fabric.js 3.6.6</desc>
-<defs>
-</defs>
-<g transform="matrix(1 0 0 1 259.5 136)">
-<path stroke-linecap="round" d="M 209 60 L 210 210 L 308 210 L 308 61 L 209 60" transform="translate(-258.5, -135)" style="stroke: rgb(0,0,0); stroke-width: 2; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(86,142,255); fill-rule: nonzero; opacity: 1;"/>
-</g>
-<g transform="matrix(0.43 0 0 0.43 260.02 133.98)">
-<path stroke-linecap="round" d="m 0 59.82677 l 27.527777 -8.654488 l -19.512508 -21.258898 l 28.167 6.268881 l -6.268881 -28.167 l 21.258898 19.512508 l 8.654488 -27.527777 l 8.654491 27.527777 l 21.258896 -19.512508 l -6.2688828 28.167 l 28.167 -6.268881 l -19.512512 21.258898 l 27.527779 8.654488 l -27.527779 8.654491 l 19.512512 21.258896 l -28.167 -6.2688828 l 6.2688828 28.167 l -21.258896 -19.512512 l -8.654491 27.527779 l -8.654488 -27.527779 l -21.258898 19.512512 l 6.268881 -28.167 l -28.167 6.2688828 l 19.512508 -21.258896 z" transform="translate(-59.83, -59.83)" style="stroke: rgb(0,0,0); stroke-width: 2; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(255,255,255); fill-rule: evenodd; opacity: 1;"/>
-</g>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 651 1001">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke-width: 20px;
+      }
+
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #cf2027;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        stroke-width: 15px;
+      }
+
+      .cls-3 {
+        fill: #414042;
+        stroke: #231f20;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1" data-name="Layer 1">
+    <rect class="cls-3" x=".5" y=".5" width="650" height="1000"/>
+    <rect class="cls-2" x="50.5" y="50.5" width="550" height="900"/>
+  </g>
+  <g id="Layer_2" data-name="Layer 2">
+    <g>
+      <polyline class="cls-1" points="408.75 235.48 502.28 329.01 325.5 505.79 148.72 329.01 242.25 235.48"/>
+      <rect class="cls-1" x="200.5" y="559.5" width="250" height="250" transform="translate(-388.68 430.65) rotate(-45)"/>
+      <polyline class="cls-1" points="325.5 861.27 325.5 203.27 381.56 155.05"/>
+      <line class="cls-1" x1="325.5" y1="139.73" x2="325.5" y2="203.27"/>
+      <line class="cls-1" x1="325.5" y1="203.27" x2="269.44" y2="155.05"/>
+    </g>
+  </g>
 </svg>
