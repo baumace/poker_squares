@@ -23,7 +23,6 @@ class Card {
     }
 
     getImageSource() {
-        return `/images/card_placeholder.svg`;
         return `/images/${convertSuitToString(this.suit)}_${convertRankToString(
             this.rank,
         )}.svg`;
