@@ -57,7 +57,7 @@
             disabled={disableDeal}
         >
             {#if deck.length > 0}
-                <img src="/images/card_placeholder.svg" alt="card back" />
+                <img src="images/card_placeholder.svg" alt="card back" />
             {/if}
         </button>
     </div>

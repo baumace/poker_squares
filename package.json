@@ -2,13 +2,15 @@
   "name": "app",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://baumace.github.io/poker_squares",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest",
-    "docs": "./node_modules/jsdoc/jsdoc.js -c ./.jsdoc.conf.json"
+    "docs": "./node_modules/jsdoc/jsdoc.js -c ./.jsdoc.conf.json",
+    "deploy": "npx gh-pages -d dist"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^3.0.1",
@@ -16,5 +18,8 @@
     "svelte": "^4.2.8",
     "vite": "^5.0.8",
     "vitest": "^1.1.0"
+  },
+  "dependencies": {
+    "gh-pages": "^6.1.1"
   }
 }
