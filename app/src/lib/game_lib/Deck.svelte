@@ -62,14 +62,14 @@
         </button>
     </div>
     <div>
-        <button class="card_item" id="dealt">
+        <div class="card_item" id="dealt">
             {#if $activeCard !== DEFAULT_CARD}
                 <img
                     src={$activeCard.getImageSource()}
                     alt={$activeCard.toString()}
                 />
             {/if}
-        </button>
+        </div>
     </div>
 </div>
 
@@ -77,6 +77,12 @@
     .deck_container {
         height: 100%;
         margin-top: -7.5rem;
+    }
+    button {
+        background: none;
+    }
+    button:hover {
+        background: red;
     }
     #undealt {
         margin-bottom: 2rem;

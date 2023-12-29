@@ -55,18 +55,21 @@
     {#each grid as row, r}
         <span class="card_row">
             {#each row as gridItem, c}
-                <button
-                    class="card_item"
-                    disabled={gridItem.occupied}
-                    on:click={() => handleClick(gridItem, r, c)}
-                >
-                    {#if gridItem.occupied}
+                {#if gridItem.occupied}
+                    <div class="card_item">
                         <img
                             src={gridItem.card.getImageSource()}
                             alt={gridItem.card.toString()}
                         />
-                    {/if}
-                </button>
+                    </div>
+                {:else}
+                    <button
+                        class="card_item"
+                        disabled={gridItem.occupied}
+                        on:click={() => handleClick(gridItem, r, c)}
+                    >
+                    </button>
+                {/if}
             {/each}
             <div class="card_item" id="row_item">
                 <div id="row_score">

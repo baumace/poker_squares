@@ -41,6 +41,11 @@ img {
     height: 100%;
 }
 
+button {
+    outline: none;
+    border: none;
+}
+
 @media (prefers-color-scheme: light) {
     :root {
         color: #213547;
