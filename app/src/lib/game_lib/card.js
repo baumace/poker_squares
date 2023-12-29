@@ -23,14 +23,14 @@ class Card {
     }
 
     getImageSource() {
-        return `/images/${convertSuitToString(this.suit)}_${convertRankToString(
+        return `/images/${convertSuitToString(this.suit)}/${convertRankToString(
             this.rank,
         )}.svg`;
     }
 
     toString() {
-        return `${convertRankToString(this.rank)}_${convertSuitToString(
-            this.suit,
+        return `${convertSuitToString(this.suit)}_${convertRankToString(
+            this.rank,
         )}`;
     }
 }

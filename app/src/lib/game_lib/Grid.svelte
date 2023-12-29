@@ -68,7 +68,7 @@
                     {/if}
                 </button>
             {/each}
-            <div class="card_item" id="score">
+            <div class="card_item" id="row_item">
                 <div id="row_score">
                     {rowScores[r]}
                 </div>
@@ -77,13 +77,13 @@
     {/each}
     <span>
         {#each columnScores as score}
-            <div class="card_item" id="score">
+            <div class="card_item" id="column_item">
                 <div id="column_score">
                     {score}
                 </div>
             </div>
         {/each}
-        <div class="card_item" id="score">
+        <div class="card_item" id="total_item">
             <div id="total_score">
                 {rowScores
                     .concat(columnScores)
@@ -103,10 +103,11 @@
     .card_row {
         display: flex;
     }
-    #score {
+    #row_item {
         outline: none;
         border: none;
         color: cyan;
+        width: 1%;
     }
     #row_score {
         text-align: left;
@@ -114,21 +115,30 @@
         padding: none;
         position: absolute;
         top: 50%;
-        left: 25%;
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
     }
+    #column_item {
+        outline: none;
+        border: none;
+        color: cyan;
+        height: 1%;
+    }
     #column_score {
         position: absolute;
-        top: 25%;
         left: 50%;
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
     }
+    #total_item {
+        outline: none;
+        border: none;
+        color: lime;
+        height: 1%;
+        width: 1%;
+    }
     #total_score {
         position: absolute;
-        top: 25%;
-        left: 25%;
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
     }
